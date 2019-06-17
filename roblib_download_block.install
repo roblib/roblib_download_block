@@ -1,0 +1,16 @@
+<?php
+/**
+ * @file
+ * Implementations of installation hooks.
+ */
+
+
+/**
+ * Implements hook_uninstall().
+ */
+function upei_roblib_ill_uninstall() {
+  $variables = [
+    'roblib_download_block_datastreams_allowed',
+  ];
+  array_walk($variables, 'variable_del');
+}

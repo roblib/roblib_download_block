@@ -1,0 +1,3 @@
+name = Roblib Download Block
+description = Allows users direct links to download configured datastreams (if they have the correct permissions).
+core = 7.x
