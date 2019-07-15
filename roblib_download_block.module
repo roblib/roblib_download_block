@@ -121,9 +121,10 @@ function roblib_download_block_create_select($object) {
   $datastreams = explode(',', variable_get('roblib_download_block_datastreams_allowed', t('PDF, OBJ, JP2, OCR')));
   foreach($datastreams as $datastream) {
     $datastream = trim($datastream);
+    $datastream_label = ($datastream == 'OBJ') ? 'TIFF' : $datastream;
     if (isset($object[$datastream]) && islandora_datastream_access(ISLANDORA_VIEW_OBJECTS, $object[$datastream])) {
       $size = islandora_datastream_get_human_readable_size($object[$datastream]);
-      $options[url("/islandora/object/$pid/datastream/$datastream/download", array('absolute' => TRUE))] = t('@datastream (@size)', array('@datastream' => $datastream, '@size' => $size));
+      $options[url("/islandora/object/$pid/datastream/$datastream/download", array('absolute' => TRUE))] = t('@datastream (@size)', array('@datastream' => $datastream_label, '@size' => $size));
     }
   }
   // no datastreams available for download
